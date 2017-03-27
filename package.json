@@ -1,17 +1,14 @@
 {
-  "name": "",
+  "name": "acme-users-products-react",
   "version": "1.0.0",
   "main": "server.js",
-  "repository": {
-    "type": "git",
-    "url": "none at present"
-  },
+  "repository": {},
   "author": "Vince Rios",
   "license": "MIT",
   "scripts": {
     "postinstall": "npm run webpack",
     "webpack": "./node_modules/webpack/bin/webpack.js",
-    "start:dev": "npm run webpack -- -w & nodemon --ignore dist/ --ignore src/ server.js"
+    "start:dev": "npm run webpack -- -w & nodemon --ignore dist/ --ignore browser/react/ server.js"
   },
   "description": "react setup template",
   "dependencies": {
