@@ -80,3 +80,7 @@ table {
     b, strong{
         font-weight: 400;
     }
+	.bodyHeading{
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
