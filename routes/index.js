@@ -4,7 +4,7 @@ const db = require( '../db' );
 const model = db.models;
 
 router.get('/users', (req, res, next) => {
-    res.send();
+    res.send({hello: 'hello'});
 });
 
 router.get('/products', (req, res, next) => {

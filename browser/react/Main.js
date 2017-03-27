@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Nav from './Nav';
 import Users from './Users';
+import Products from './Products';
 
 class Main extends Component {
     constructor() {
@@ -11,7 +12,7 @@ class Main extends Component {
     componentDidMount() {
         Promise.all([
             axios.get('/api/users'),
-            axios.get('api/products')
+            axios.get('/api/products')
         ])
         .then(([users, products]) => {
             this.setState({ products, users });
@@ -22,7 +23,7 @@ class Main extends Component {
         if (this.state.view === 'Users') {
             dataView = <Users users={ this.state.users } />;
         } else {
-            dataView = <div>This is the Product View</div>;
+            dataView = <Products products={ this.state.products } />;
         }
 
         return (
