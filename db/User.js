@@ -8,7 +8,9 @@ const defineAttr = {
 };
 
 const defineMethods = {
-
+    // classMethods: {
+    //     userRecords: function
+    // }
 };
 
 const User = acmeDB.define('user', defineAttr, defineMethods);
