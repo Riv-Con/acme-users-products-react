@@ -14,8 +14,9 @@ class Main extends Component {
             axios.get('/api/users'),
             axios.get('/api/products')
         ])
-        .then(([users, products]) => {
-            this.setState({ products, users });
+        .then(([_usersObj, _productsObj]) => {
+            this.setState({ products: _productsObj.data, users: _usersObj.data });
+            console.log(this.state);
         })
     }
     render() {

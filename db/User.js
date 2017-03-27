@@ -10,7 +10,7 @@ const defineAttr = {
 const defineMethods = {
     classMethods: {
         userRecords: function() {
-            return this.finadAll({
+            return this.findAll({
                 order: [
                     ['name', 'ASC']
                 ]
