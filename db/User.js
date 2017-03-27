@@ -8,9 +8,15 @@ const defineAttr = {
 };
 
 const defineMethods = {
-    // classMethods: {
-    //     userRecords: function
-    // }
+    classMethods: {
+        userRecords: function() {
+            return this.finadAll({
+                order: [
+                    ['name', 'ASC']
+                ]
+            })
+        }
+    }
 };
 
 const User = acmeDB.define('user', defineAttr, defineMethods);
