@@ -3,12 +3,16 @@ import Nav from './Nav';
 import Users from './Users';
 
 class Main extends Component {
+    constructor() {
+        super();
+        this.state = { view: 'Users'};
+    }
     render() {
         return  (
             <div className="container">
                 <h3>Acme Users & Products</h3>
-                <Nav />
-                <Users />
+                <Nav view={this.state.view} />
+                <Users  />
             </div>
         )
     }
