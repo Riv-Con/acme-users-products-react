@@ -8,7 +8,7 @@ const ProductsList  = ({ products }) => {
                     <div>
                         <ul className="list-group">
                             { products.map(product => { 
-                                return <li key={ product.id }  className="list-item well">{ product.name }</li>
+                                return <li key={ product.id }  className="list-group-item well">{ product.name }</li>
                                 })
                             }
                         </ul>

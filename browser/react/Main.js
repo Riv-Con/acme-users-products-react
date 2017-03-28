@@ -9,16 +9,16 @@ class Main extends Component {
         super();
         this.state = { view: 'Products', products: [], users: []};
     }
+
     componentDidMount() {
         Promise.all([
             axios.get('/api/users'),
             axios.get('/api/products')
         ])
-        .then(([users, products]) => {
-            this.setState({ products: products.data, users: users.data });
+        .then(([_users, _products]) => [_users.data, _products.data])
+        .then(([users, products]) => this.setState({ products, users})
+        )}
 
-        })
-    }
     render() {
         let dataView;
         if (this.state.view === 'Users') {
