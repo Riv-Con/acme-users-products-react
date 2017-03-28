@@ -10,6 +10,10 @@ class Main extends Component {
         this.state = { view: 'Products', products: [], users: []};
     }
 
+    onDelete(productId) {
+        console.log(productId);
+    }
+
     componentDidMount() {
         Promise.all([
             axios.get('/api/users'),
@@ -24,7 +28,7 @@ class Main extends Component {
         if (this.state.view === 'Users') {
             dataView = <UserList users={ this.state.users } />;
         } else {
-            dataView = <ProductList products={ this.state.products } />;
+            dataView = <ProductList products={ this.state.products } onDelete={ this.onDelete } />;
         }
 
         return (

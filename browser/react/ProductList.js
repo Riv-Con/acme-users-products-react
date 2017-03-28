@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
+import ProductListItem from './ProductListItem';
 
-const ProductsList  = ({ products }) => {
+const ProductsList  = ({ products, onDelete }) => {
         return (
             <div className="row">
                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <h5 className="bodyHeading">Products:</h5>
                     <div>
                         <ul className="list-group">
-                            { products.map(product => { 
-                                return <li key={ product.id }  className="list-group-item well">{ product.name }</li>
-                                })
-                            }
+                            { products.map( product => <ProductListItem onDelete={ onDelete } key={ product.id } product={ product } />) }
                         </ul>
                     </div>
                 </div>
