@@ -7,7 +7,10 @@ const ProductsList  = ({ products }) => {
                     <h5 className="bodyHeading">Products:</h5>
                     <div>
                         <ul className="list-group">
-                            { products.map(product =>  <li key={ product.id }  className="list-item well">{ product.name }</li>) }
+                            { products.map(product => { 
+                                return <li key={ product.id }  className="list-item well">{ product.name }</li>
+                                })
+                            }
                         </ul>
                     </div>
                 </div>
