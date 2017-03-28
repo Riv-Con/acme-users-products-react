@@ -8,7 +8,7 @@
   "scripts": {
     "postinstall": "npm run webpack",
     "webpack": "./node_modules/webpack/bin/webpack.js",
-    "start:dev": "npm run webpack -- -w & nodemon --ignore dist/ --ignore browser/react/ server.js"
+    "start:dev": "npm run webpack -- -w & nodemon --ignore dist/ --ignore browser/ server.js"
   },
   "description": "react setup template",
   "dependencies": {
