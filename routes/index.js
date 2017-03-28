@@ -19,4 +19,16 @@ router.get('/products', (req, res, next) => {
         .catch(err => console.log(err));
 });
 
+router.post('/products', (req, res, next) => {
+    models.Product.addProduct(req.body.name)
+        .then(() => res.sendStatus(200))
+        .catch(err => console.log(err));
+});
+
+router.delete('/products/:id', (req, res, next) => {
+    models.Product.deleteById(req.params.id)
+        .then(() => res.sendStatus(200))
+        .catch(err => console.log(err));
+});
+
 module.exports = router;

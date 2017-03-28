@@ -21,6 +21,9 @@ const defineMethods = {
                 where: {id: userId}
             })
         },
+        addProduct: function(name){
+            return this.create({ name })
+        },
         findById: function(userId) {
             return this.findOne({
                 where: {id: userId}
