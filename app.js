@@ -10,6 +10,7 @@ app.use('/dist', express.static(path.join(__dirname, 'dist')));
 app.use('/css', express.static(path.join(__dirname, 'browser/css')));
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/api', routes);
 
 app.get('/', (req, res, next) => {
