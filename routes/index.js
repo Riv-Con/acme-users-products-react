@@ -1,10 +1,10 @@
 const express = require( 'express' );
 const router = express.Router();
 const db = require( '../db' );
-const model = db.models;
+const models = db.models;
 
 router.get('/users', (req, res, next) => {
-    model.User.userRecords()
+    models.User.userRecords()
         .then( users => {
             res.send(users);
         })
@@ -12,7 +12,7 @@ router.get('/users', (req, res, next) => {
 });
 
 router.get('/products', (req, res, next) => {
-    model.Product.productRecords()
+    models.Product.productRecords()
         .then( products => {
             res.send(products);
         })
