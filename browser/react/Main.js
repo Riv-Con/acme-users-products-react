@@ -8,10 +8,15 @@ class Main extends Component {
     constructor() {
         super();
         this.state = { view: 'Products', products: [], users: []};
+        this.onDelete = this.onDelete.bind(this);
     }
 
-    onDelete(productId) {
-        console.log(productId);
+    onDelete(product) {
+        const products = this.state.products.filter( _product => _product.id !== product.id);
+        this.setState({ products });
+        axios.delete(`/api/products/${product.id}`)
+            .then(() => console.log(`deleted: ${product.name}`))
+            .catch(err => console.log(err));
     }
 
     componentDidMount() {
