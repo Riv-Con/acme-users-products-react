@@ -1,36 +1,36 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Nav from './Nav';
-import Users from './Users';
-import Products from './Products';
+import UserList from './UserList';
+import ProductList from './ProductList';
 
 class Main extends Component {
     constructor() {
         super();
-        this.state = { view: 'Users', products: [], users: []};
+        this.state = { view: 'Products', products: [], users: []};
     }
     componentDidMount() {
         Promise.all([
             axios.get('/api/users'),
             axios.get('/api/products')
         ])
-        .then(([_usersObj, _productsObj]) => {
-            this.setState({ products: _productsObj.data, users: _usersObj.data });
-            console.log(this.state);
+        .then(([users, products]) => {
+            this.setState({ products: products.data, users: users.data });
+
         })
     }
     render() {
         let dataView;
         if (this.state.view === 'Users') {
-            dataView = <Users users={ this.state.users } />;
+            dataView = <UserList users={ this.state.users } />;
         } else {
-            dataView = <Products products={ this.state.products } />;
+            dataView = <ProductList products={ this.state.products } />;
         }
 
         return (
             <div className="container">
                 <h3>Acme Users & Products</h3>
-                <Nav view={this.state.view} />
+                <Nav view={ this.state.view} users={ this.state.users} products={ this.state.products } />
                 { dataView }
             </div>
         )

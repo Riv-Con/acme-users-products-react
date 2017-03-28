@@ -5,13 +5,18 @@ const model = db.models;
 
 router.get('/users', (req, res, next) => {
     model.User.userRecords()
-        .then(_users => {
-            res.send(_users);
+        .then( users => {
+            res.send(users);
         })
+        .catch(err => console.log(err));
 });
 
 router.get('/products', (req, res, next) => {
-    res.send();
+    model.Product.productRecords()
+        .then( products => {
+            res.send(products);
+        })
+        .catch(err => console.log(err));
 });
 
 module.exports = router;
