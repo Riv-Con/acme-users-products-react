@@ -8,7 +8,13 @@ class Main extends Component {
     constructor() {
         super();
         this.state = { view: 'Products', products: [], users: []};
+
         this.onDelete = this.onDelete.bind(this);
+        this.onClick = this.onClick.bind(this);
+    }
+
+    onClick(view) {
+        this.setState({ view: view })
     }
 
     onDelete(product) {
