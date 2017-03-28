@@ -45,7 +45,7 @@ class Main extends Component {
         return (
             <div className="container">
                 <h3>Acme Users & Products</h3>
-                <Nav view={ this.state.view} users={ this.state.users} products={ this.state.products } />
+                <Nav view={ this.state.view} users={ this.state.users} products={ this.state.products } onClick={ this.onClick } />
                 { dataView }
             </div>
         )
