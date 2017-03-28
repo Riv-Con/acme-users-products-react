@@ -21,7 +21,7 @@ router.get('/products', (req, res, next) => {
 
 router.post('/products', (req, res, next) => {
     models.Product.addProduct(req.body.name)
-        .then(() => res.sendStatus(200))
+        .then( product => res.send( product ))
         .catch(err => console.log(err));
 });
 

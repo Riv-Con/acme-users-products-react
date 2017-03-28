@@ -1,16 +1,31 @@
 import React, { Component } from 'react';
+
 import axios from 'axios';
 import Nav from './Nav';
 import UserList from './UserList';
 import ProductList from './ProductList';
+import ProductForm from './ProductForm';
 
 class Main extends Component {
     constructor() {
         super();
-        this.state = { view: 'Products', products: [], users: []};
+        this.state = { view: 'Products', products: [], users: [] };
 
         this.onDelete = this.onDelete.bind(this);
         this.onClick = this.onClick.bind(this);
+        this.onSave = this.onSave.bind(this);
+    }
+
+    onSave(name){
+        if (name){
+            axios.post('/api/products', { name })
+                .then(_product => _product.data)
+                .then(product => {
+                    let products = this.state.products;
+                    products.push(product);
+                    this.setState({ products })
+            });
+        }
     }
 
     onClick(view) {
@@ -39,7 +54,17 @@ class Main extends Component {
         if (this.state.view === 'Users') {
             dataView = <UserList users={ this.state.users } />;
         } else {
-            dataView = <ProductList products={ this.state.products } onDelete={ this.onDelete } />;
+            dataView = (
+                <div>
+                    <h5 className="bodyHeading">Products:</h5>
+                    <div className= "ProdForm">
+                        <ProductForm onSave={ this.onSave } />
+                    </div>
+                    <div>
+                        <ProductList products={ this.state.products } onDelete={ this.onDelete } />
+                    </div>
+                </div>
+            )
         }
 
         return (
