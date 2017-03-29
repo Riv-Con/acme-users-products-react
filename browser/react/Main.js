@@ -16,6 +16,16 @@ class Main extends Component {
         this.onSave = this.onSave.bind(this);
     }
 
+    componentDidMount() {
+        Promise.all([
+            axios.get('/api/users'),
+            axios.get('/api/products')
+        ])
+        .then(([_users, _products]) => [_users.data, _products.data])
+        .then(([users, products]) => this.setState({ products, users})
+        )
+    }
+
     onSave(name){
         if (name){
             axios.post('/api/products', { name })
@@ -29,7 +39,7 @@ class Main extends Component {
     }
 
     onClick(view) {
-        this.setState({ view: view })
+        this.setState({ view })
     }
 
     onDelete(product) {
@@ -39,15 +49,6 @@ class Main extends Component {
             .then(() => console.log(`deleted: ${product.name}`))
             .catch(err => console.log(err));
     }
-
-    componentDidMount() {
-        Promise.all([
-            axios.get('/api/users'),
-            axios.get('/api/products')
-        ])
-        .then(([_users, _products]) => [_users.data, _products.data])
-        .then(([users, products]) => this.setState({ products, users})
-        )}
 
     render() {
         let dataView;
