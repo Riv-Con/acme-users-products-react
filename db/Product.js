@@ -17,7 +17,7 @@ const defineMethods = {
             })
         },
         deleteById: function(userId) { 
-            userId = userId*1;
+            userId = userId * 1;
             return this.destroy({
                 where: {id: userId}
             })
