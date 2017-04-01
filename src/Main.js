@@ -19,7 +19,7 @@ class Main extends Component {
             axios.get('/api/products')
         ])
         .then(([usersResponse, productsResponse]) => [usersResponse.data, productsResponse.data])
-        .then(([users, products]) => this.setState({ products, users})
+        .then(([users, products]) => this.setState({ products, users })
         )
     }
 
