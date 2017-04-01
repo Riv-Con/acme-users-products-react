@@ -4,7 +4,6 @@ import axios from 'axios';
 import Nav from './Nav';
 import UserList from './UserList';
 import ProductList from './ProductList';
-import ProductForm from './ProductForm';
 
 class Main extends Component {
     constructor() {
@@ -51,20 +50,12 @@ class Main extends Component {
     }
 
     render() {
-        let dataView;
+        let userView;
         if (this.state.view === 'Users') {
-            dataView = <UserList users={ this.state.users } />;
+            userView = <UserList users={ this.state.users } />;
         } else {
-            dataView = (
-                <div>
-                    <h5 className="bodyHeading">Products:</h5>
-                    <div className= "ProdForm">
-                        <ProductForm onSave={ this.onSave } />
-                    </div>
-                    <div>
-                        <ProductList products={ this.state.products } onDelete={ this.onDelete } />
-                    </div>
-                </div>
+            userView = (
+                <ProductList products={ this.state.products } onDelete={ this.onDelete } onSave={ this.onSave } />
             )
         }
 
@@ -72,7 +63,7 @@ class Main extends Component {
             <div className="container">
                 <h3>Acme Users & Products</h3>
                 <Nav view={ this.state.view} users={ this.state.users} products={ this.state.products } onClick={ this.onClick } />
-                { dataView }
+                { userView }
             </div>
         )
     }
