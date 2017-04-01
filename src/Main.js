@@ -10,7 +10,7 @@ class Main extends Component {
         this.state = { products: [], users: [] };
 
         this.onDelete = this.onDelete.bind(this);
-        this.onSave = this.onSave.bind(this);
+        this.onCreate = this.onCreate.bind(this);
     }
 
     componentDidMount() {
@@ -18,15 +18,15 @@ class Main extends Component {
             axios.get('/api/users'),
             axios.get('/api/products')
         ])
-        .then(([_users, _products]) => [_users.data, _products.data])
+        .then(([usersResponse, productsResponse]) => [usersResponse.data, productsResponse.data])
         .then(([users, products]) => this.setState({ products, users})
         )
     }
 
-    onSave(name){
+    onCreate(name){
         if (name){
             axios.post('/api/products', { name })
-                .then(_product => _product.data)
+                .then(response => response.data)
                 .then(product => {
                     let products = this.state.products;
                     products.push(product);
@@ -49,8 +49,8 @@ class Main extends Component {
         return (
             <div className="container">
                 <h3>Acme Users & Products</h3>
-                <nav role="navigation">
-                    <ul className="nav nav-pills">
+                <nav>
+                    <ul className="nav nav-tabs">
                         <li><NavLink to="/users">Users ({ userLength })</NavLink></li>
                         <li><NavLink to="/products">Products ({ productLength })</NavLink></li>
                     </ul>
@@ -60,7 +60,7 @@ class Main extends Component {
                             users: this.state.users,
                             products: this.state.products,
                             onDelete: this.onDelete,
-                            onSave: this.onSave
+                            onCreate: this.onCreate
                         }
                     )
                 }

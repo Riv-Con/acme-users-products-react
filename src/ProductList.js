@@ -3,14 +3,14 @@ import React from 'react';
 import ProductForm from './ProductForm'
 import ProductListItem from './ProductListItem';
 
-const ProductsList  = ({ products, onDelete, onSave }) => {
+const ProductsList  = ({ products, onDelete, onCreate }) => {
         return (
             <div className="row">
                 <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <div>
                         <h5 className="bodyHeading">Products:</h5>
                         <div className= "ProdForm">
-                            <ProductForm onSave={ onSave } />
+                            <ProductForm onCreate={ onCreate } />
                         </div>
                         <div>
                             <ul className="list-group">
