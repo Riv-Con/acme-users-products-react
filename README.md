@@ -1,3 +1,3 @@
 deployed:
 
-https://safe-plateau-92446.herokuapp.com/
+https://secret-spire-28285.herokuapp.com/#/products
