@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router';
 
-import axios from 'axios';
 import NavLink from './NavLink';
+import axios from 'axios';
 
 class Main extends Component {
     constructor() {
@@ -48,8 +49,8 @@ class Main extends Component {
         return (
             <div className="container">
                 <h3>Acme Users & Products</h3>
-                <nav>
-                    <ul className="nav nav-tabs" role="tablist">
+                <nav role="navigation">
+                    <ul className="nav nav-tabs">
                         <li><NavLink to="/users">Users ({ userLength })</NavLink></li>
                         <li><NavLink to="/products">Products ({ productLength })</NavLink></li>
                     </ul>
