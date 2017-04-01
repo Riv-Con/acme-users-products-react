@@ -50,7 +50,7 @@ class Main extends Component {
             <div className="container">
                 <h3>Acme Users & Products</h3>
                 <nav role="navigation">
-                    <ul className="nav nav-tabs">
+                    <ul className="nav nav-pills">
                         <li><NavLink to="/users">Users ({ userLength })</NavLink></li>
                         <li><NavLink to="/products">Products ({ productLength })</NavLink></li>
                     </ul>
